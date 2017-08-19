@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<style>
+			@page {
+				size: 62mm 29mm;
+			    margin: 3mm;
+			}
+			body {
+				font-size: 10px;
+			}
+			#qrcode {
+				width: 23mm;
+				height: 23mm;
+				position: top;
+			}
+			#left {
+				vertical-align: top;
+				text-align: center;
+			}
+			#right {
+				vertical-align: top;
+				text-align: center;
+			}
+		</style>
+    </head>
+    <body>
+		<table style="width:100%; height:100%">
+			<tr id="left">
+			<td>
+				<b>{{ title }}</b>
+				<p>
+				{% if owner %}
+				Owner: {{ owner }}
+				{% endif %}
+				</p>
+			</td>
+			<td id="right">
+				<img id="qrcode" src="qrcode.png">
+			</td>
+		  </tr>
+		</table>
+
+		
+    </body>
+</html>
