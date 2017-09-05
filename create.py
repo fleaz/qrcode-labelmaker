@@ -4,6 +4,7 @@
 import click
 import os
 import qrcode
+import cups
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
@@ -12,9 +13,10 @@ from weasyprint import HTML
 @click.command()
 @click.option('--template', '-t', help="Define the filename of the template to use")
 @click.option('--owner', '-o', help="Write the owner onto the label")
+@click.option('--printer', is_flag=True)
 @click.argument("name")
 @click.argument("url")
-def generator(template, owner, name, url):
+def generator(template, owner, name, url, printer):
 
     if not template:
         template = "default.html"
@@ -41,6 +43,14 @@ def generator(template, owner, name, url):
 
     # Generate pdf
     HTML(string=html_out, base_url=os.path.realpath(__file__)).write_pdf("label.pdf")
+
+    if printer:
+        conn = cups.Connection()
+        printers = conn.getPrinters()
+        for printer in printers:
+            if printer == "Brother_QL-500":
+                conn.printFile(printer, "label.pdf", "test", {})
+                break
 
 if __name__ == "__main__":
     generator()
