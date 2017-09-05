@@ -1,6 +1,7 @@
 # qrcode-labelmaker
 
 Printer: Brother QL-500
+
 Label Size: 62x29mm
 
 ## Installation
@@ -12,10 +13,14 @@ pip install -r requirements.txt
 
 ## Usage:
 Things without owner: 
-` ./create.py "My awesome Thing" "https://wiki.darmstadt.ccc.de/awesome-thing"`
+```
+./create.py "My awesome Thing" "https://wiki.darmstadt.ccc.de/awesome-thing"
+```
 
 Things with owner: 
-` ./create.py -o "fleaz" "My private Thing" "https://wiki.darmstadt.ccc.de/private-thing"`
+```
+./create.py -o "fleaz" "My private Thing" "https://wiki.darmstadt.ccc.de/private-thing"
+```
 
 If you add the `--printer` switch, the label will automatically get printed
 after creating. We asume that the printer is called *Brother_QL-500*.
